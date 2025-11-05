@@ -1,0 +1,44 @@
+//
+//  Localizable.strings
+//  Image Converter
+//
+//  Created by Yulin Luo on 11/5/25.
+//
+
+//* App Core */
+"APP_TITLE" = "Image Converter";
+"FORMAT_JPEG" = "JPEG (High Quality)";
+"FORMAT_PNG" = "PNG (Lossless)";
+"FORMAT_TIFF" = "TIFF (Professional)";
+"FORMAT_HEIC" = "HEIC (Efficient)";
+
+/* Status Messages */
+"STATUS_READY" = "Ready. Drag images into the window.";
+"STATUS_PENDING" = "Pending";
+"STATUS_QUEUED" = "Queued";
+"STATUS_PROCESSING" = "Processing...";
+"STATUS_SUCCESS" = "✅ Success";
+"STATUS_FAILED" = "❌ Failed";
+"STATUS_ADDED_COUNT %lld %lld" = "Added %lld images. Total %lld.";
+"STATUS_PREPARING" = "Preparing to convert...";
+"STATUS_PROCESSING_PROGRESS %lld %lld %@" = "Processing (%lld/%lld): %@...";
+"STATUS_COMPLETE_ALL_SUCCESS %lld" = "🎉 All successful! Converted %lld images.";
+"STATUS_COMPLETE_WITH_FAILURES %lld %lld" = "⚠️ Conversion finished. Success: %lld, Failed: %lld.";
+"STATUS_ADD_IMAGES_FIRST" = "Please add images first.";
+
+/* UI Elements */
+"OUTPUT_FORMAT_LABEL" = "Output Format:";
+"BUTTON_START" = "Start Conversion";
+"BUTTON_PROCESSING" = "Processing...";
+"LIST_TITLE" = "Conversion List";
+"LIST_TOTAL_COUNT %lld" = "Total %lld";
+"BUTTON_CLEAR_LIST" = "Clear List";
+
+/* Drop Zone */
+"DROP_HERE_TITLE" = "Drag Images or Folders Here";
+"DROP_HERE_TITLE_DRAGGING" = "Release to Add Files";
+"DROP_HERE_SUBTITLE" = "Supports RAW, NEF, CR2/3, TIFF, PNG, JPEG, HEIC, etc.";
+
+/* Language Switcher (New) */
+"LANGUAGE_LABEL" = "Language:";
+"LANGUAGE_SYSTEM" = "System Default";

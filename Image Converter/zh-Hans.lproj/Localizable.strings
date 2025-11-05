@@ -1,0 +1,37 @@
+/* App Core */
+"APP_TITLE" = "Image Converter";
+"FORMAT_JPEG" = "JPEG (高质量)";
+"FORMAT_PNG" = "PNG (无损)";
+"FORMAT_TIFF" = "TIFF (专业)";
+"FORMAT_HEIC" = "HEIC (高效)";
+
+/* Status Messages */
+"STATUS_READY" = "准备就绪。将图片拖放到窗口中。";
+"STATUS_PENDING" = "待处理";
+"STATUS_QUEUED" = "排队中";
+"STATUS_PROCESSING" = "处理中...";
+"STATUS_SUCCESS" = "✅ 成功";
+"STATUS_FAILED" = "❌ 失败";
+"STATUS_ADDED_COUNT %lld %lld" = "已添加 %lld 张图片。共计 %lld 张。";
+"STATUS_PREPARING" = "准备开始转换...";
+"STATUS_PROCESSING_PROGRESS %lld %lld %@" = "正在处理 (%lld/%lld): %@...";
+"STATUS_COMPLETE_ALL_SUCCESS %lld" = "🎉 全部成功！已转换 %lld 张图片。";
+"STATUS_COMPLETE_WITH_FAILURES %lld %lld" = "⚠️ 转换完成。成功: %lld 张，失败: %lld 张。";
+"STATUS_ADD_IMAGES_FIRST" = "请先添加图片。";
+
+/* UI Elements */
+"OUTPUT_FORMAT_LABEL" = "输出格式:";
+"BUTTON_START" = "开始转换";
+"BUTTON_PROCESSING" = "处理中...";
+"LIST_TITLE" = "待转换列表";
+"LIST_TOTAL_COUNT %lld" = "共 %lld 张";
+"BUTTON_CLEAR_LIST" = "清空列表";
+
+/* Drop Zone */
+"DROP_HERE_TITLE" = "拖拽图片或文件夹到这里";
+"DROP_HERE_TITLE_DRAGGING" = "松开以添加文件";
+"DROP_HERE_SUBTITLE" = "支持 RAW, NEF, CR2/3, TIFF, PNG, JPEG, HEIC 等格式";
+
+/* Language Switcher (New) */
+"LANGUAGE_LABEL" = "语言:";
+"LANGUAGE_SYSTEM" = "系统默认";
