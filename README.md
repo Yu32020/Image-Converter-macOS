@@ -1,5 +1,5 @@
 # Image-Converter-macOS
-A high-performance macOS utility for converting various image formats (including RAW/NEF/TIFF) . 高性能、高颜值的 macOS 图像格式转换工具。
+A high-performance macOS utility for converting various image formats (including RAW/NEF/TIFF) . 高性能的 macOS 图像格式转换工具。
 
 # Image Converter for macOS
 
