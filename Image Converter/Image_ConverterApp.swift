@@ -1,10 +1,3 @@
-//
-//  Image_ConverterApp.swift
-//  Image Converter
-//
-//  Created by Yulin Luo on 11/5/25.
-//
-
 import SwiftUI
 
 @main
@@ -13,5 +6,7 @@ struct Image_ConverterApp: App {
         WindowGroup {
             ContentView()
         }
+        .defaultSize(width: 940, height: 680)
+        .windowResizability(.contentMinSize)
     }
 }
