@@ -1,17 +1,17 @@
 /* App Core */
 "APP_TITLE" = "Image Converter";
-"FORMAT_JPEG" = "JPEG (高质量)";
-"FORMAT_PNG" = "PNG (无损)";
-"FORMAT_TIFF" = "TIFF (专业)";
-"FORMAT_HEIC" = "HEIC (高效)";
+"FORMAT_JPEG" = "JPEG";
+"FORMAT_PNG" = "PNG";
+"FORMAT_TIFF" = "TIFF";
+"FORMAT_HEIC" = "HEIC";
 
 /* Status Messages */
-"STATUS_READY" = "准备就绪。将图片拖放到窗口中。";
+"STATUS_READY" = "添加图片或文件夹以开始转换。";
 "STATUS_PENDING" = "待处理";
 "STATUS_QUEUED" = "排队中";
 "STATUS_PROCESSING" = "处理中...";
-"STATUS_SUCCESS" = "✅ 成功";
-"STATUS_FAILED" = "❌ 失败";
+"STATUS_SUCCESS" = "已转换";
+"STATUS_FAILED" = "失败";
 "STATUS_ADDED_COUNT %lld %lld" = "已添加 %lld 张图片。共计 %lld 张。";
 "STATUS_PREPARING" = "准备开始转换...";
 "STATUS_PROCESSING_PROGRESS %lld %lld %@" = "正在处理 (%lld/%lld): %@...";
@@ -21,7 +21,7 @@
 
 /* UI Elements */
 "OUTPUT_FORMAT_LABEL" = "输出格式:";
-"BUTTON_START" = "开始转换";
+"BUTTON_START" = "转换…";
 "BUTTON_PROCESSING" = "处理中...";
 "LIST_TITLE" = "待转换列表";
 "LIST_TOTAL_COUNT %lld" = "共 %lld 张";
@@ -35,3 +35,26 @@
 /* Language Switcher (New) */
 "LANGUAGE_LABEL" = "语言:";
 "LANGUAGE_SYSTEM" = "系统默认";
+
+"APP_SUBTITLE" = "简单、可靠的本地图像转换。";
+"STATUS_IMPORTING" = "正在添加图片…";
+"STATUS_NO_NEW_IMAGES" = "没有新的支持格式图片；已跳过重复或不支持的文件。";
+"STATUS_LIST_CHANGED" = "列表已更新，请选择格式开始转换。";
+"STATUS_CANCELLED" = "未转换";
+"STATUS_CANCELLING" = "当前图片完成后停止…";
+"STATUS_CANCELLED_SUMMARY %lld %lld %lld" = "已停止。成功 %lld 张，失败 %lld 张，未转换 %lld 张。";
+"BUTTON_ADD_IMAGES" = "添加图片…";
+"BUTTON_BROWSE" = "选择图片或文件夹…";
+"BUTTON_SHOW_OUTPUT" = "打开输出目录";
+"BUTTON_REVEAL_FILE" = "在访达中显示转换结果";
+"BUTTON_REMOVE" = "从列表移除图片";
+"BUTTON_CANCEL" = "停止";
+"BUTTON_CANCELLING" = "正在停止…";
+"BUTTON_OK" = "好";
+"CANCEL_HINT" = "完成当前图片后停止，保留已完成的文件。";
+"FOLDER_IMPORT_HINT" = "文件夹仅导入直接包含的图片，不扫描子文件夹。";
+"OUTPUT_SAFETY_HINT" = "保留原文件；输出文件遇到重名时自动编号。";
+"PROGRESS_LABEL" = "转换进度";
+"IMPORT_ERROR_TITLE" = "部分项目无法添加";
+"ERROR_UNREADABLE_IMAGE" = "无法解码图片；文件可能损坏，或当前 macOS 不支持此格式。";
+"ERROR_INVALID_DESTINATION" = "请选择存在的输出文件夹。";

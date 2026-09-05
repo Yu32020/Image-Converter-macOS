@@ -1,111 +1,71 @@
-# Image-Converter-macOS
-A high-performance macOS utility for converting various image formats (including RAW/NEF/TIFF) . 高性能的 macOS 图像格式转换工具。
-
 # Image Converter for macOS
 
-A high-performance macOS utility designed for converting various image formats, including professional RAW types (NEF, CR2/3, DNG, TIFF), into universally compatible formats like JPEG, PNG, HEIC, and TIFF. Built with SwiftUI, it features a modern "Liquid Glass" (Vibrancy) aesthetic and is optimized for processing hundreds of images without excessive memory usage.
+A small, local SwiftUI utility for converting images to JPEG, PNG, TIFF and HEIC. Includes English and Simplified Chinese, drag and drop, and a file picker.
 
+**The maintenance fixes below are in the current source. The existing v1.0 release download does not include them; build the current source to use this version.**
 
----
+## What changed in 1.1
 
-## ✨ Features
+- Originals and existing output files are preserved. Name collisions become `photo (1).png`, `photo (2).png`, and so on, including conversion back into the source folder. Images are encoded to a temporary file, then published atomically without overwriting an existing path.
+- Duplicate inputs are removed across files, folders and repeated imports. Directories with image-like names are not treated as images.
+- Import and conversion cannot change the queue at the same time. Conversion and thumbnail decoding run away from the UI, with one conversion and one thumbnail decoder at a time.
+- Add images with **Add Images…** or **⌘O**, remove individual items, inspect failure details and reveal results in Finder. **Stop** finishes the current image and leaves the remaining queue unconverted; completed files are kept. Starting again converts the whole queue to new output files.
+- JPEG transparency is composited onto white. PNG and TIFF preserve transparency. EXIF orientation is applied to the output pixels.
+- App Sandbox stays enabled with access to user-selected files and folders. Network access is disabled; no account or upload is needed.
 
-*   **Broad Format Support**: Input support for NEF, CR2, CR3, RAW, DNG, TIFF, JPG, PNG, HEIC, ARW, ORF, and more.
-*   **Versatile Output**: Convert to JPEG (High Quality), PNG (Lossless), TIFF (Professional), or HEIC (Efficient).
-*   **Optimized Performance**:
-    *   Utilizes Apple's Core Image framework with GPU acceleration.
-    *   Processes images sequentially in the background to maintain low memory footprint.
-    *   Employs `autoreleasepool` to immediately free memory after each conversion.
-    *   Efficient thumbnail generation avoids loading full RAW files into memory.
-*   **Drag & Drop Interface**: Easily add individual files or entire folders.
-*   **Multi-language Support**: Includes English and Simplified Chinese, with an in-app language switcher.
+## Requirements and format limits
 
-## 🖥️ Requirements
+- macOS **13 or later**; Xcode **26 or later** for the Swift 6 source and project format. This maintenance revision was built and regression-tested with Xcode 27 / Swift 6.4 on Apple Silicon. Older supported macOS versions have not been runtime-tested.
+- Inputs: JPEG, PNG, TIFF, HEIC/HEIF and selected RAW extensions (NEF, CR2, CR3, DNG, ARW, ORF, PEF, RAW). Actual RAW camera support and HEIC encoding depend on the installed macOS version and hardware; unsupported or damaged images produce a visible per-file error.
+- Adding a folder scans its **immediate visible image files only**. It does not traverse subfolders.
+- This is a **single-image conversion tool**. It does not preserve multi-page TIFFs, image sequences, HEIC auxiliary images, RAW editing data or all source metadata.
+- Output uses **8-bit sRGB** rendering. PNG/TIFF compression is lossless for the rendered pixels, but converting a high-bit-depth, HDR, wide-gamut or RAW source is not an archival lossless operation. JPEG quality is 90%; HEIC quality is 85%. Keep originals when source detail or metadata matters.
 
-*   macOS 11.0 (Big Sur) or later.
+## Build and use
 
-## 🚀 Installation & Usage
+```sh
+git clone https://github.com/Yu32020/Image-Converter-macOS.git
+cd Image-Converter-macOS
+open 'Image Converter.xcodeproj'
+```
 
-1.  **Download the App**:
-    *   Go to the [Releases](https://github.com/Yu32020/Image-Converter-macOS/releases) section of this repository.
-    *   Download the latest `Image Converter.zip` file.
-    *   Unzip the file and move `Image Converter.app` to your Applications folder.
+Select the **Image Converter** scheme, choose your development team in Signing & Capabilities if needed, and run on **My Mac**. Keep App Sandbox and user-selected read/write file access enabled.
 
-2.  **Usage**:
-    *   Launch the application.
-    *   Drag your images or folders into the main window.
-    *   Select your desired Output Format and Language.
-    *   Click "Start Conversion" and choose a destination folder.
+For an unsigned build check that does not require a development account:
 
-## 🛠️ Building from Source
+```sh
+xcodebuild -project 'Image Converter.xcodeproj' \
+  -scheme 'Image Converter' -configuration Release \
+  -destination 'platform=macOS' -derivedDataPath .build/DerivedData \
+  CODE_SIGNING_ALLOWED=NO build
+```
 
-This project is built using Swift and SwiftUI. To build from source:
+Add images or folders, select the output format, then click **Convert…** (or **⌘Return**) and choose a destination folder. Completed rows show the actual saved filename. **Show Output** opens the chosen folder.
 
-1.  Clone the repository:
-    ```bash
-    git clone [https://github.com/Yu32020/Image-Converter-macOS.git](https://github.com/Yu32020/Image-Converter-macOS.git)
-    ```
-2.  Open the project in the latest version of Xcode.
-3.  Build and Run the `Image Converter` scheme.
-    *   *Note: For successful file writing during development, ensure the App Sandbox is disabled in the project's "Signing & Capabilities" settings.*
+## Regression checks
 
-## 📜 License
+```sh
+bash scripts/test.sh
+```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The runner compiles the production conversion code and view model with Swift 6 strict concurrency. It creates synthetic fixtures in a dedicated system temporary directory, tests all four output formats, image dimensions, transparency, EXIF orientation, duplicate imports, cancellation, mixed success/failure, temporary-file cleanup and concurrent filename collisions. It does not open the app, read personal images or access the network. Fixtures remain under the printed path for inspection. GitHub Actions runs this suite and a macOS Release build on pushes and pull requests.
 
----
----
+## 中文说明
 
-# 中文说明
+本工具在本地将图片转换为 JPEG、PNG、TIFF 或 HEIC，提供简体中文与英文界面。
 
-# macOS 图像转换器 (Image Converter)
+**本次维护修复仅包含在当前源码中；现有 v1.0 Release 下载包没有这些修复。请构建当前源码使用新版本。**
 
-一款高性能的 macOS 实用工具，专为转换各种图像格式而设计，包括专业的 RAW 类型（如 NEF, CR2/3, DNG, TIFF），并可输出为通用格式（如 JPEG, PNG, HEIC 和 TIFF）。该应用使用 SwiftUI 构建，并针对处理数百张图像进行了优化，不会过度占用内存。
+- **保留原图**：输出遇到重名时自动编号；先完成临时文件编码，再以不覆盖已有文件的方式原子保存。可以安全地选择原图所在目录。
+- **更清晰的操作**：支持文件选择器、拖放、单项移除、错误详情、访达定位，以及当前图片完成后停止。再次开始会重新转换整个列表并保存为新文件。
+- **可靠的队列**：同一图片只添加一次，导入与转换不能同时修改列表；文件夹仅扫描直接包含的可见图片，不递归扫描子文件夹。
+- **图像规则明确**：JPEG 透明区域使用白底，PNG/TIFF 保留透明度，输出像素应用 EXIF 方向。输出统一使用 8 位 sRGB；不适合无损归档高位深、HDR、广色域或 RAW 原始数据，也不保留多页 TIFF、图像序列、HEIC 辅助图或全部元数据。
+- **保持应用沙盒**：只使用用户选中的文件和目录，不需要关闭 App Sandbox，无网络上传。
 
+系统要求为 **macOS 13 及以上**，源码构建需要 **Xcode 26 及以上**。本次在 Apple Silicon、Xcode 27 / Swift 6.4 环境完成构建与回归检查；没有在所有旧版 macOS 上运行测试。RAW 相机格式与 HEIC 编码能否使用取决于系统和硬件，不支持的文件会显示失败原因。
 
----
+使用上方命令克隆仓库，在 Xcode 打开项目并选择 `Image Converter` scheme；必要时选择自己的开发团队，**保留 App Sandbox**。添加图片，选择输出格式，点击“转换…”并选择输出目录。开发者可运行 `bash scripts/test.sh` 执行仅使用合成图片的回归检查。
 
-## ✨ 功能特性
+## License
 
-*   **广泛的格式支持**：支持输入 NEF, CR2, CR3, RAW, DNG, TIFF, JPG, PNG, HEIC, ARW, ORF 等格式。
-*   **多样的输出选项**：可转换为 JPEG (高质量)、PNG (无损)、TIFF (专业) 或 HEIC (高效)。
-*   **极致的性能优化**：
-    *   利用 Apple 的 Core Image 框架进行 GPU 加速处理。
-    *   在后台按顺序处理图像，保持低内存占用。
-    *   使用 `autoreleasepool` 在每次转换后立即释放内存。
-    *   高效的缩略图生成机制，避免将完整的 RAW 文件加载到内存中。
-*   **拖放界面**：轻松添加单个文件或整个文件夹。
-*   **多语言支持**：包含英文和简体中文，并提供应用内语言切换器。
-
-## 🖥️ 系统要求
-
-*   macOS 11.0 (Big Sur) 或更高版本。
-
-## 🚀 安装与使用
-
-1.  **下载应用**：
-    *   前往本仓库的 [Releases](https://github.com/Yu32020/Image-Converter-macOS/releases) 页面。
-    *   下载最新的 `Image Converter.zip` 文件。
-    *   解压文件，并将 `Image Converter.app` 移动到您的“应用程序”文件夹。
-
-2.  **使用方法**：
-    *   启动应用程序。
-    *   将您的图像或文件夹拖放到主窗口中。
-    *   选择您想要的输出格式和语言。
-    *   点击“开始转换”并选择一个目标文件夹。
-
-## 🛠️ 从源码构建
-
-本项目使用 Swift 和 SwiftUI 构建。从源码构建：
-
-1.  克隆仓库：
-    ```bash
-    git clone [https://github.com/Yu32020/Image-Converter-macOS.git](https://github.com/Yu32020/Image-Converter-macOS.git)
-    ```
-2.  在最新版本的 Xcode 中打开项目。
-3.  构建并运行 `Image Converter` scheme。
-    *   *注意：为了在开发过程中成功写入文件，请确保在项目的 "Signing & Capabilities" 设置中禁用了 App Sandbox（应用沙盒）。*
-
-## 📜 许可证
-
-本项目采用 MIT 许可证授权 - 详情请参阅 [LICENSE](LICENSE) 文件。
+[MIT](LICENSE)
