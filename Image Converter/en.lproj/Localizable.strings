@@ -7,18 +7,18 @@
 
 //* App Core */
 "APP_TITLE" = "Image Converter";
-"FORMAT_JPEG" = "JPEG (High Quality)";
-"FORMAT_PNG" = "PNG (Lossless)";
-"FORMAT_TIFF" = "TIFF (Professional)";
-"FORMAT_HEIC" = "HEIC (Efficient)";
+"FORMAT_JPEG" = "JPEG";
+"FORMAT_PNG" = "PNG";
+"FORMAT_TIFF" = "TIFF";
+"FORMAT_HEIC" = "HEIC";
 
 /* Status Messages */
-"STATUS_READY" = "Ready. Drag images into the window.";
+"STATUS_READY" = "Add images or a folder to get started.";
 "STATUS_PENDING" = "Pending";
 "STATUS_QUEUED" = "Queued";
 "STATUS_PROCESSING" = "Processing...";
-"STATUS_SUCCESS" = "✅ Success";
-"STATUS_FAILED" = "❌ Failed";
+"STATUS_SUCCESS" = "Converted";
+"STATUS_FAILED" = "Failed";
 "STATUS_ADDED_COUNT %lld %lld" = "Added %lld images. Total %lld.";
 "STATUS_PREPARING" = "Preparing to convert...";
 "STATUS_PROCESSING_PROGRESS %lld %lld %@" = "Processing (%lld/%lld): %@...";
@@ -28,7 +28,7 @@
 
 /* UI Elements */
 "OUTPUT_FORMAT_LABEL" = "Output Format:";
-"BUTTON_START" = "Start Conversion";
+"BUTTON_START" = "Convert…";
 "BUTTON_PROCESSING" = "Processing...";
 "LIST_TITLE" = "Conversion List";
 "LIST_TOTAL_COUNT %lld" = "Total %lld";
@@ -42,3 +42,26 @@
 /* Language Switcher (New) */
 "LANGUAGE_LABEL" = "Language:";
 "LANGUAGE_SYSTEM" = "System Default";
+
+"APP_SUBTITLE" = "Local image conversion, made simple.";
+"STATUS_IMPORTING" = "Adding images…";
+"STATUS_NO_NEW_IMAGES" = "No new supported images. Duplicates and unsupported files were skipped.";
+"STATUS_LIST_CHANGED" = "Queue updated. Choose a format to convert.";
+"STATUS_CANCELLED" = "Not converted";
+"STATUS_CANCELLING" = "Stopping after the current image…";
+"STATUS_CANCELLED_SUMMARY %lld %lld %lld" = "Stopped. Converted: %lld, failed: %lld, not converted: %lld.";
+"BUTTON_ADD_IMAGES" = "Add Images…";
+"BUTTON_BROWSE" = "Choose Images or Folders…";
+"BUTTON_SHOW_OUTPUT" = "Show Output";
+"BUTTON_REVEAL_FILE" = "Show converted file in Finder";
+"BUTTON_REMOVE" = "Remove image from queue";
+"BUTTON_CANCEL" = "Stop";
+"BUTTON_CANCELLING" = "Stopping…";
+"BUTTON_OK" = "OK";
+"CANCEL_HINT" = "Finish the current image, then stop. Completed files are kept.";
+"FOLDER_IMPORT_HINT" = "Folders include immediate image files; subfolders are skipped.";
+"OUTPUT_SAFETY_HINT" = "Originals stay unchanged. Existing output names receive a number.";
+"PROGRESS_LABEL" = "Conversion progress";
+"IMPORT_ERROR_TITLE" = "Some items could not be added";
+"ERROR_UNREADABLE_IMAGE" = "The image could not be decoded. The file may be damaged or unsupported by this macOS version.";
+"ERROR_INVALID_DESTINATION" = "Choose an existing output folder.";
